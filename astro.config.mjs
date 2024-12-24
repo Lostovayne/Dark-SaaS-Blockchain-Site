@@ -5,12 +5,11 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    react(),
-  ],
-  output: "static",
-  
+	integrations: [
+		tailwind({
+			applyBaseStyles: false
+		}),
+		react()
+	],
+	output: "static"
 });
