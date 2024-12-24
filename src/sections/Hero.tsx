@@ -9,6 +9,7 @@ export const HeroSection = () => {
 	const icosahedronRef = useRef<HTMLDivElement | null>(null);
 	const cubeRef = useRef<HTMLImageElement | null>(null);
 	const torusRef = useRef<HTMLImageElement | null>(null);
+	const cuboidRef = useRef<HTMLImageElement | null>(null);
 
 	// Takes the scroll progress and uses it to animate the hexagon
 	const { scrollYProgress } = useScroll({
@@ -21,8 +22,20 @@ export const HeroSection = () => {
 		offset: ["start end", "end start"]
 	});
 
+	const { scrollYProgress: torusScrollYProgress } = useScroll({
+		target: torusRef,
+		offset: ["start end", "end start"]
+	});
+
+	const { scrollYProgress: cuboidScrollYProgress } = useScroll({
+		target: cuboidRef,
+		offset: ["start end", "end start"]
+	});
+
 	const IcosanhedronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
 	const CubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
+	const TorusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
+	const CuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
 
 	return (
 		<section className="py-24 md:py-52 overflow-x-clip">
@@ -64,13 +77,27 @@ export const HeroSection = () => {
 
 						<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 							<Circle className="absolute  left-[200px] top-[270px]">
-								<img src="/assets/images/cuboid.png" alt="Cuboid 3d" className="size-[140px]" />
+								<motion.img
+									ref={cuboidRef}
+									style={{ rotate: CuboidRotate }}
+									src="/assets/images/cuboid.png"
+									alt="Cuboid 3d"
+									className="size-[140px]"
+								/>
 							</Circle>
 						</div>
 
 						<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 							<Circle className="absolute -left-[600px] -top-[80px] ">
-								<img src="/assets/images/torus.png" alt="Torus 3d" className="size-[140px]" />
+								<motion.img
+									style={{
+										rotate: TorusRotate
+									}}
+									ref={torusRef}
+									src="/assets/images/torus.png"
+									alt="Torus 3d"
+									className="size-[140px]"
+								/>
 							</Circle>
 						</div>
 
