@@ -50,7 +50,9 @@ export const Footer = () => {
 					<p className="text-zinc-400">&copy; 2024 Blockforge. All rights reserved.</p>
 					<div className="mt-4 md:mt-0 flex gap-6">
 						{socialIcons.map((icon, iconIndex) => (
-							<div className="inline-flex h-10 w-10 bg-zinc-800 rounded-full items-center justify-center">
+							<div
+								key={`${iconIndex}-icon`}
+								className="inline-flex h-10 w-10 bg-zinc-800 rounded-full items-center justify-center">
 								{icon.icon}
 							</div>
 						))}
