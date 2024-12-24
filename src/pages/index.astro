@@ -1,5 +1,6 @@
 ---
 import { CallToActionSection } from '@/sections/CallToAction';
+import { Footer } from '@/sections/Footer';
 import { TestimonialsSection } from '@/sections/Testimonials';
 import { LatestPosts } from '@components/LatestPosts';
 import DefaultLayout from '@layouts/Default.astro';
@@ -27,4 +28,5 @@ const latestPosts = posts
 	<LatestPosts latestPosts={latestPosts} />
 	<TestimonialsSection />
 	<CallToActionSection />
+	<Footer />
 </DefaultLayout>
