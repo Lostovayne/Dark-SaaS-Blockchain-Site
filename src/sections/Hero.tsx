@@ -40,7 +40,9 @@ export const HeroSection = () => {
 	return (
 		<section className="py-24 md:py-52 overflow-x-clip">
 			<div className="container">
-				<p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">Introducing Blockforge</p>
+				<p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">
+					Introducing Blockforge
+				</p>
 				<h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4 max-w-3xl mx-auto">
 					The Future of Blockchain is Here.
 				</h1>
@@ -54,10 +56,10 @@ export const HeroSection = () => {
 					<div className="inline-flex  relative z-0">
 						{/* Agregando el marco en el centro */}
 						<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-							<Hexagon className="size-[1100px]" />
+							<Hexagon className="size-[1100px]" size={1100} />
 						</div>
 						<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-							<Hexagon className="size-[1800px]" />
+							<Hexagon className="size-[1800px]" size={1800} />
 						</div>
 						<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 							<Circle className="absolute left-[200px] -top-[900px]" animate>
