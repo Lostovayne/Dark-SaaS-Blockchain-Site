@@ -21,7 +21,7 @@ const latestPosts = posts
 
 <DefaultLayout>
 	<HeaderSection />
-	<HeroSection client:only="react"  />
+	<HeroSection client:load />
 	<FeaturesCardsSection />
 	<FeaturesGrid />
 	<LatestPosts latestPosts={latestPosts} />
