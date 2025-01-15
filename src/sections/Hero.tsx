@@ -65,9 +65,7 @@ export const HeroSection = () => {
 							<Circle className="absolute left-[200px] -top-[900px]" animate>
 								<motion.img
 									ref={cubeRef}
-									style={{
-										rotate: CubeRotate
-									}}
+									style={{ rotate: CubeRotate, transitionDuration: "0.6s" }}
 									src="/assets/images/cube.png"
 									alt="Cube 3d"
 									className="size-[140px]"
