@@ -34,7 +34,7 @@ const cardData = [
 const FeaturesCardsSection = () => {
 	return (
 		<section className='py-24 overflow-clip md:-mt-28'>
-			<div className='container'>
+			<div className='container mx-auto'>
 				<h2 className='font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center'>
 					Discover the future of blockchain with Blockforge.
 				</h2>

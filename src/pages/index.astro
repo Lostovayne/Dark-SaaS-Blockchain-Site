@@ -1,31 +1,33 @@
 ---
-import { CallToActionSection } from "@/sections/CallToAction"
-import { Footer } from "@/sections/Footer"
-import { TestimonialsSection } from "@/sections/Testimonials"
-import { LatestPosts } from "@components/LatestPosts"
-import DefaultLayout from "@layouts/Default.astro"
-import FeaturesCardsSection from "@sections/FeaturesCards"
-import FeaturesGrid from "@sections/FeaturesGrid"
-import { HeaderSection } from "@sections/Header"
-import { HeroSection } from "@sections/Hero"
-import { getCollection } from "astro:content"
+import { CallToActionSection } from "@/sections/CallToAction";
+import { Footer } from "@/sections/Footer";
+import { TestimonialsSection } from "@/sections/Testimonials";
+import { LatestPosts } from "@components/LatestPosts";
+import DefaultLayout from "@layouts/Default.astro";
+import FeaturesCardsSection from "@sections/FeaturesCards";
+import FeaturesGrid from "@sections/FeaturesGrid";
+import { HeaderSection } from "@sections/Header";
+import { HeroSection } from "@sections/Hero";
+import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog");
 const latestPosts = posts
-	.sort((a, b) => {
-		if (a.data.pubDate.valueOf() === b.data.pubDate.valueOf()) return 0;
-		return a.data.pubDate.valueOf() > b.data.pubDate.valueOf() ? -1 : 1;
-	})
-	.slice(0, 4);
+  .sort((a, b) => {
+    if (a.data.pubDate.valueOf() === b.data.pubDate.valueOf()) return 0;
+    return a.data.pubDate.valueOf() > b.data.pubDate.valueOf() ? -1 : 1;
+  })
+  .slice(0, 4);
 ---
 
 <DefaultLayout>
-	<HeaderSection />
-	<HeroSection client:load />
-	<FeaturesCardsSection />
-	<FeaturesGrid />
-	<LatestPosts latestPosts={latestPosts} />
-	<TestimonialsSection />
-	<CallToActionSection />
-	<Footer />
+  <HeaderSection />
+  <HeroSection client:only="react">
+    <div slot="fallback" class="min-h-screen"></div>
+  </HeroSection>
+  <FeaturesCardsSection />
+  <FeaturesGrid />
+  <LatestPosts latestPosts={latestPosts} />
+  <TestimonialsSection />
+  <CallToActionSection />
+  <Footer />
 </DefaultLayout>

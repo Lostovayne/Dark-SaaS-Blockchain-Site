@@ -1,9 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   body {
-    @apply antialiased bg-zinc-900 text-zinc-300 font-body;
+    @apply antialiased bg-zinc-900 text-zinc-300;
   }
 }

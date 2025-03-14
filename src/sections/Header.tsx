@@ -3,7 +3,7 @@ import { CutCornerButton } from "@/components/CutCornerButton";
 export const HeaderSection = () => {
   return (
     <header className="sticky top-0 z-40 bg-zinc-900/50 backdrop-blur-lg">
-      <div className="container">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center h-24 md:h-28">
           <div>
             <img src="/assets/images/logo.svg" alt="Block Logo" />

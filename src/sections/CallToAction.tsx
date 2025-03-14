@@ -5,7 +5,7 @@ import { Hexagon } from '@/components/Hexagon';
 export const CallToActionSection = () => {
 	return (
 		<section className='py-60 overflow-hidden'>
-			<div className='container'>
+			<div className='container mx-auto'>
 				<div className='relative'>
 					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
 						<Hexagon className='size-[700px]' />

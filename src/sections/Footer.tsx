@@ -34,7 +34,7 @@ const socialIcons = [
 export const Footer = () => {
 	return (
 		<footer className="py-24 bg-zinc-950">
-			<div className="container">
+			<div className="container mx-auto">
 				<div className={"flex justify-between items-center"}>
 					<div>
 						<img src="/assets/images/logo.svg" alt="Blockforge logo" />
