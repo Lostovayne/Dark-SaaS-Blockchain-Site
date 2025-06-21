@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased bg-zinc-900 text-zinc-300;
+  }
+  :root {
+    /* Font families */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Karla', sans-serif;
+    
+    /* Container padding values */
+    --container-padding-sm: 1.5rem;
+    --container-padding-md: 2rem;
+    --container-padding-lg: 5.5rem;
+    
+    /* Screen breakpoints */
+    --screen-sm: 375px;
+    --screen-md: 768px;
+    --screen-lg: 1200px;
+  }
+
+  html {
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom components */
+@layer components {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding-sm);
+    padding-right: var(--container-padding-sm);
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      padding-left: var(--container-padding-md);
+      padding-right: var(--container-padding-md);
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      padding-left: var(--container-padding-lg);
+      padding-right: var(--container-padding-lg);
+    }
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

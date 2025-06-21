@@ -9,7 +9,7 @@ export const CutCornerButton = ({ className, children }: ComponentPropsWithoutRe
         className
       )}
     >
-      <div className="absolute inset-0 outline outline-2 -outline-offset-2 outline-fuchsia-500 [mask-image:linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
+      <div className="absolute inset-0 outline outline-2 -outline-offset-2 outline-fuchsia-500 mask-[linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
       {/* Agregado el SVG aquí */}
       <svg
         width="24"

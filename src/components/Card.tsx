@@ -37,7 +37,7 @@ const Card = (
                 : "group-hover:bg-fuchsia-400  bg-fuchsia-500  "
         )}></div>
 
-      <div className='absolute inset-0 bg-zinc-800 -z-10 rounded-2xl [mask-image:linear-gradient(225deg,transparent,transparent_40px,black_40px)]'></div>
+      <div className='absolute inset-0 bg-zinc-800 -z-10 rounded-2xl mask-[linear-gradient(225deg,transparent,transparent_40px,black_40px)]'></div>
       <div>{children}</div>
       <div className={twMerge("flex justify-between mt-12 ", pdbutton ? "max-md:pb-7" : "")}>
         <TextButton color={color}>{buttonText || "Learn more"}</TextButton>

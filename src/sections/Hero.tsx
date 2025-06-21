@@ -109,7 +109,7 @@ export const HeroSection = () => {
             >
               <img
                 src="/assets/images/icosahedron.png"
-                className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-[4%] hue-rotate-[240deg]"
+                className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-4 hue-rotate-240"
                 alt=""
               />
 
