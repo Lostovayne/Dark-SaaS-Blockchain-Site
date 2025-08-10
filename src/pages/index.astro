@@ -24,7 +24,7 @@ const latestPosts = posts
   <HeroSection client:only="react">
     <div slot="fallback" class="min-h-screen"></div>
   </HeroSection>
-  <FeaturesCardsSection />
+  <FeaturesCardsSection client:load />
   <FeaturesGrid />
   <LatestPosts latestPosts={latestPosts} />
   <TestimonialsSection />

@@ -15,20 +15,20 @@
 		"@astrojs/react": "4.3.0",
 		"@astrojs/tailwind": "6.0.2",
 		"@tailwindcss/typography": "^0.5.16",
-		"@tailwindcss/vite": "^4.1.10",
-		"@types/react": "^19.1.8",
-		"@types/react-dom": "^19.1.6",
-		"astro": "5.10.1",
+		"@tailwindcss/vite": "^4.1.11",
+		"@types/react": "^19.1.9",
+		"@types/react-dom": "^19.1.7",
+		"astro": "5.12.9",
 		"framer-motion": "^11.18.2",
 		"install": "^0.13.0",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
 		"tailwind-merge": "^2.6.0",
-		"tailwindcss": "^4.1.10",
-		"typescript": "^5.8.3"
+		"tailwindcss": "^4.1.11",
+		"typescript": "^5.9.2"
 	},
 	"devDependencies": {
-		"prettier": "^3.6.0",
-		"prettier-plugin-tailwindcss": "^0.6.13"
+		"prettier": "^3.6.2",
+		"prettier-plugin-tailwindcss": "^0.6.14"
 	}
 }
