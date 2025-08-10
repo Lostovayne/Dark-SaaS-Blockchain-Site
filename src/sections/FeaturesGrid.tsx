@@ -1,5 +1,6 @@
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { TextButton } from "@/components/TextButton";
+import { useRef } from "react";
 
 const listItems = [
   "Experience unparalleled security and scalability",
@@ -8,6 +9,9 @@ const listItems = [
 ];
 
 const FeaturesGrid = () => {
+  const torusKnotRef = useRef(null);
+  const firstHemisphereRef = useRef(null);
+
   return (
     <section className="py-24 overflow-x-clip">
       <div className="container mx-auto">
@@ -18,13 +22,13 @@ const FeaturesGrid = () => {
                 Empowering the future of blockchain.
               </h2>
               <p className="text-xl lg:text-2xl text-zinc-400 mt-8">
-                Blockforge provides robust and secure infrastructure to support
-                the next generation of decentralized applications.
+                Blockforge provides robust and secure infrastructure to support the next generation
+                of decentralized applications.
               </p>
               <ul className="flex flex-col gap-8 mt-12 ">
                 {listItems.map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <div className="inline-flex shrink-0 items-center justify-center  size-8 outline outline-4 -outline-offset-4 outline-fuchsia-500/10 rounded-full">
+                    <div className="inline-flex shrink-0 items-center justify-center  size-8  outline-4 -outline-offset-4 outline-fuchsia-500/10 rounded-full">
                       <div className="size-1.5 bg-fuchsia-500 rounded-full"></div>
                     </div>
                     <span className="text-xl font-bold">{item}</span>
@@ -54,11 +58,7 @@ const FeaturesGrid = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             <div className="relative hidden md:block">
               <div className="absolute right-0  z-0">
-                <img
-                  src="/assets/images/cone.png"
-                  alt="Cone 3D"
-                  className="size-96 max-w-none "
-                />
+                <img src="/assets/images/cone.png" alt="Cone 3D" className="size-96 max-w-none " />
                 <img
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere 3d"
@@ -72,15 +72,13 @@ const FeaturesGrid = () => {
               </h2>
               <div className="flex flex-col text-xl lg:text-2xl text-zinc-400 mt-6 gap-6">
                 <p>
-                  Blockforge is dedicated to supporting the evolution of Web3
-                  applications by delivering the necessary infrastructure and
-                  security for Web3.
+                  Blockforge is dedicated to supporting the evolution of Web3 applications by
+                  delivering the necessary infrastructure and security for Web3.
                 </p>
                 <p>
-                  Blockforge champions Web3 for everyone. As a decentralized
-                  blockchain scaling platform, Blockforge enables developers to
-                  create scalable, user-friendly dApps with low transaction
-                  costs, all while ensuring robust security.
+                  Blockforge champions Web3 for everyone. As a decentralized blockchain scaling
+                  platform, Blockforge enables developers to create scalable, user-friendly dApps
+                  with low transaction costs, all while ensuring robust security.
                 </p>
               </div>
               <div className="flex gap-8 mt-12">

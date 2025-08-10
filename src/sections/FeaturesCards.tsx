@@ -42,7 +42,7 @@ const FeaturesCardsSection = () => {
     if (isHovered) return;
     const timeout = setTimeout(() => {
       setSelectedCardIndex((selectedCardIndex + 1) % cardData.length);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timeout);
   }, [selectedCardIndex, isHovered]);
 
@@ -64,7 +64,7 @@ const FeaturesCardsSection = () => {
                   transform: `translateX(calc((-100% - 2rem) * ${selectedCardIndex}))`,
                 }}
               >
-                <Card key={title} className="max-w-xs md:max-w-md" pdbutton>
+                <Card key={title} className="max-w-xs md:max-w-md" pdbutton color={color}>
                   <div className="flex justify-center -mt-28">
                     <div className="inline-flex relative">
                       <div className="absolute h-4 w-full top-[calc(100%+16px)] bg-zinc-950/70 group-hover:bg-zinc-950/30 transition duration-300 rounded-[100%] mask-[radial-gradient(closest-side,black,transparent)]"></div>

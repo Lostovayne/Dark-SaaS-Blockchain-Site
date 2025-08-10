@@ -1,211 +1,237 @@
-![Blockforge Logo](./public/assets/images/logo.svg)
+# 🚀 Blockforge - Dark SaaS Blockchain Site
 
-## Project Description
+Una plataforma web moderna y dinámica construida con Astro y React, enfocada en mostrar las capacidades y servicios de una plataforma blockchain de vanguardia. El diseño utiliza una paleta de colores oscura con acentos fucsia, creando una estética futurista y tecnológica.
 
-Blockforge is an innovative platform offering cutting-edge blockchain solutions for businesses and developers. This modern and dynamic website is built with Astro and React, focused on showcasing the capabilities and services of a blockchain platform. The design utilizes a dark color palette with fuchsia accents, creating a futuristic and technological aesthetic.
+![Homepage Preview](./resources/Homepage-Desktop.jpg)
 
-![Resources](./resources/Careers-Desktop.jpg)
+## ✨ Características Principales
 
-## Key Features
+- **Diseño Responsivo Moderno**: Interfaz completamente adaptable con tema oscuro elegante
+- **Animaciones Interactivas**: Secciones dinámicas con animaciones fluidas usando Framer Motion
+- **Blog Integrado**: 10+ artículos sobre blockchain, DeFi, NFTs y tecnologías emergentes
+- **Sección de Carreras**: Portal de empleos con 4+ posiciones disponibles
+- **Componentes React Dinámicos**: Integración perfecta de componentes interactivos
+- **Carrusel de Características**: Presentación automática de servicios con navegación manual
+- **Testimonios**: Sección de reseñas y testimonios de clientes
+- **Call-to-Action Optimizado**: Secciones de conversión estratégicamente ubicadas
 
-- Modern responsive design with dark mode
-- Interactive sections with smooth animations
-- Integrated blog with blockchain and technology articles
-- Careers section for job opportunities
-- React component integration for dynamic functionalities
-- Smart contract deployment and management
-- Real-time blockchain analytics dashboard
-- Multi-wallet integration support
-- Advanced security protocols
-- API documentation and developer tools
+## 🛠️ Stack Tecnológico
 
-## Technologies Used
+- **Framework**: [Astro 5.12.9](https://astro.build/) - Generador de sitios estáticos moderno
+- **Frontend**: [React 19.1.1](https://reactjs.org/) - Biblioteca de componentes interactivos
+- **Estilos**: [Tailwind CSS 4.1.11](https://tailwindcss.com/) - Framework CSS utility-first
+- **Animaciones**: [Framer Motion 11.18.2](https://www.framer.com/motion/) - Biblioteca de animaciones
+- **Lenguaje**: [TypeScript 5.9.2](https://www.typescriptlang.org/) - JavaScript tipado
+- **Herramientas**: Prettier, Tailwind Merge, @tailwindcss/typography
 
-- [Astro](https://astro.build/)
-- [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Web3.js](https://web3js.readthedocs.io/)
-- [Ethers.js](https://docs.ethers.org/)
-- [Hardhat](https://hardhat.org/)
-- [OpenZeppelin](https://openzeppelin.com/)
-
-## Project Structure
+## 📁 Estructura del Proyecto
 
 ```
-blockforge/
+dark-saas-blockchain-site/
 │
 ├── src/
-│   ├── components/      # Reusable UI components
-│   ├── content/         # Markdown content
-│   │   ├── blog/        # Blog articles
-│   │   └── positions/   # Job positions
-│   ├── layouts/         # Page layouts
-│   ├── pages/           # Route pages
-│   ├── sections/        # Page sections
-│   ├── styles/          # Global styles
-│   └── utils/           # Helper functions
+│   ├── components/          # Componentes UI reutilizables
+│   │   ├── Card.tsx         # Componente de tarjeta base
+│   │   ├── Circle.tsx       # Elemento circular animado
+│   │   ├── CutCornerButton.tsx # Botón con esquinas cortadas
+│   │   ├── Hexagon.tsx      # Forma hexagonal
+│   │   ├── LatestPosts.tsx  # Lista de posts recientes
+│   │   ├── Tag.tsx          # Etiquetas de categorías
+│   │   └── TextButton.tsx   # Botón de texto
+│   │
+│   ├── content/             # Contenido en Markdown
+│   │   ├── blog/            # 10 artículos de blog
+│   │   └── positions/       # 4 posiciones de trabajo
+│   │
+│   ├── layouts/
+│   │   └── Default.astro    # Layout principal
+│   │
+│   ├── pages/
+│   │   ├── blog/            # Páginas del blog
+│   │   └── index.astro      # Página principal
+│   │
+│   ├── sections/            # Secciones de página
+│   │   ├── CallToAction.tsx # Llamada a la acción
+│   │   ├── FeaturesCards.tsx # Carrusel de características
+│   │   ├── FeaturesGrid.tsx # Grid de características
+│   │   ├── Footer.tsx       # Pie de página
+│   │   ├── Header.tsx       # Encabezado
+│   │   ├── Hero.tsx         # Sección hero
+│   │   └── Testimonials.tsx # Testimonios
+│   │
+│   ├── utils/
+│   │   └── postUtils.ts     # Utilidades para posts
+│   │
+│   ├── content.config.ts    # Configuración de contenido
+│   ├── env.d.ts            # Tipos de entorno
+│   └── global.css          # Estilos globales
 │
 ├── public/
-│   └── assets/
-│       ├── images/      # Static images
-│       └── icons/       # UI icons
+│   └── assets/             # Recursos estáticos
 │
-├── contracts/           # Smart contracts
-├── scripts/            # Deployment scripts
-├── test/              # Test files
-├── astro.config.mjs
-├── tailwind.config.mjs
-├── hardhat.config.ts
-├── tsconfig.json
-└── package.json
+├── resources/              # Imágenes de diseño
+├── .astro/                # Cache de Astro
+├── astro.config.mjs       # Configuración de Astro
+├── tsconfig.json          # Configuración de TypeScript
+└── package.json           # Dependencias del proyecto
 ```
 
-## Installation and Usage
+## 🚀 Instalación y Uso
 
-1. Clone the repository:
+1. **Clona el repositorio**:
 
    ```bash
-   git clone https://github.com/your-username/blockforge.git
+   git clone https://github.com/tu-usuario/dark-saas-blockchain-site.git
+   cd dark-saas-blockchain-site
    ```
 
-2. Install dependencies:
+2. **Instala las dependencias**:
 
    ```bash
-   cd blockforge
+   # Usando npm
    npm install
+
+   # O usando bun (recomendado para mejor rendimiento)
+   bun install
    ```
 
-3. Set up environment variables:
-
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-4. Start the development server:
+3. **Inicia el servidor de desarrollo**:
 
    ```bash
    npm run dev
+   # o
+   bun run dev
    ```
 
-5. Open your browser and visit `http://localhost:3000`
+4. **Abre tu navegador** y visita `http://localhost:4321`
 
-## Main Sections
+### 📋 Scripts Disponibles
 
-### Hero Section
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye el proyecto para producción
+- `npm run preview` - Previsualiza la build de producción
+- `npm run check` - Verifica el código con Astro Check
 
-The Hero section presents an impactful introduction to Blockforge with animations and geometric shapes.
+## 🎯 Secciones Principales
+
+### 🦸‍♂️ Hero Section
+
+Presentación impactante de Blockforge con animaciones y formas geométricas, incluyendo elementos circulares animados con Framer Motion.
+
+### 🎴 Features Cards
+
+Carrusel interactivo que muestra las 4 características principales:
+
+- **Revolutionary Blockchain API** - Integración y gestión de datos blockchain
+- **Decentralized Data Solutions** - Soluciones de datos descentralizadas
+- **Next-Gen Smart Contracts** - Contratos inteligentes de próxima generación
+- **Seamless Blockchain Integration** - Integración perfecta de blockchain
+
+El carrusel incluye:
+
+- Rotación automática cada 3 segundos
+- Navegación manual con indicadores
+- Animaciones hover en las tarjetas
+- Efectos de sombra y elevación
+
+### 📝 Blog
+
+10 artículos especializados sobre blockchain y tecnologías emergentes:
+
+- Blockchain Security: Protecting Digital Assets
+- Smart Contracts: Future of Legal Agreements
+- How NFTs are Changing Digital Ownership
+- Blockchain Role in Decentralized Finance (DeFi)
+- Tokenomics: Understanding Blockchain Economics
+- Blockchain Scalability: Challenges and Solutions
+- Environmental Impact of Blockchain
+- Regulatory Challenges Facing Blockchain
+- Blockchain Interoperability: Connecting Networks
+- Blockchain in Healthcare: New Frontier
+
+### 💼 Careers
+
+Portal de empleos con 4 posiciones disponibles:
+
+- **Frontend Developer** - Desarrollo de interfaces modernas
+- **UX Designer** - Diseño de experiencias de usuario
+- **Product Manager** - Gestión de productos blockchain
+- **Marketing Specialist** - Especialista en marketing digital
+
+### 💬 Testimonials
+
+Sección de testimonios y reseñas de clientes para generar confianza y credibilidad.
+
+## 🎨 Componentes Destacados
+
+### Circle Component
+
+Elemento circular animado con rotación continua usando Framer Motion:
 
 ```tsx
-export const HeroSection = () => {
-	return (
-		<section className="py-24 md:py-52 overflow-x-clip">
-			<div className="container">
-				<p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">
-					Introducing Blockforge
-				</p>
-				<h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4 max-w-3xl mx-auto">
-					The Future of Blockchain is Here.
-				</h1>
-				<p className="text-center text-xl md:text-2xl mt-6 text-zinc-400 max-w-xl mx-auto">
-					Blockforge is pioneering smart contract integrity with cutting-edge data solutions.
-				</p>
-			</div>
-		</section>
-	);
-};
+<Circle animate={true}>{/* Contenido del círculo */}</Circle>
 ```
 
-### Features
+### Card Component
 
-The features section showcases Blockforge's key capabilities using interactive cards.
+Tarjeta base reutilizable con efectos hover y esquinas redondeadas.
 
-```tsx
-const FeaturesCardsSection = () => {
-	return (
-		<section className="py-24 overflow-clip md:-mt-28">
-			<div className="container">
-				<h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
-					Discover the future of blockchain with Blockforge.
-				</h2>
-				<div className="mt-36 lg:mt-48 flex">{/* Feature cards code */}</div>
-			</div>
-		</section>
-	);
-};
+### CutCornerButton
+
+Botón personalizado con esquinas cortadas para un diseño futurista.
+
+## 🔧 Configuración Técnica
+
+### Astro Configuration
+
+```javascript
+export default defineConfig({
+  integrations: [react()],
+  output: "static",
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
 ```
 
-### Blog
+### TypeScript Paths
 
-The blog features articles about blockchain, cryptocurrencies, and related technology.
+El proyecto incluye alias de importación configurados:
 
-Example blog article:
+- `@/*` → `src/*`
+- `@components/*` → `src/components/*`
+- `@layouts/*` → `src/layouts/*`
+- `@sections/*` → `src/sections/*`
+- `@utils/*` → `src/utils/*`
 
-```markdown
----
-title: "Blockchain Security: Protecting Digital Assets"
-description: "Explore the key security features of blockchain technology and how it keeps digital assets safe from cyber threats."
-pubDate: "2024-08-16"
-category: Security
-slug: "blockchain-security-protecting-digital-assets"
-author:
-  name: "John Smith"
-  title: "Sr. Developer - BlockWorld"
-  image: "/assets/images/john.jpg"
----
-```
+## 🚀 Deployment
 
-## Smart Contracts
-
-Our smart contracts are built with security and efficiency in mind. They are audited by leading security firms and follow best practices in the industry.
-
-### Contract Deployment
-
-1. Configure your network in `hardhat.config.ts`
-2. Run deployment script:
-   ```bash
-   npx hardhat run scripts/deploy.ts --network <network-name>
-   ```
-
-## Testing
-
-Run the test suite:
+Para desplegar el proyecto:
 
 ```bash
-npm run test
+# Construir para producción
+npm run build
+
+# Previsualizar la build
+npm run preview
 ```
 
-For coverage report:
+El proyecto genera archivos estáticos optimizados en la carpeta `dist/`.
 
-```bash
-npm run coverage
-```
+## 🤝 Contribuir
 
-## Contributing
+Las contribuciones son bienvenidas. Para contribuir:
 
-Contributions are welcome! Please follow these steps:
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/NuevaCaracteristica`)
+3. Commit tus cambios (`git commit -m 'Añadir nueva característica'`)
+4. Push a la rama (`git push origin feature/NuevaCaracteristica`)
+5. Abre un Pull Request
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 📄 Licencia
 
-## Security
-
-For security concerns, please email security@blockforge.com
-
-## License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## Support
-
-- Documentation: [docs.blockforge.com](https://docs.blockforge.com)
-- Discord: [Join our community](https://discord.gg/blockforge)
-- Twitter: [@blockforge](https://twitter.com/blockforge)
+Este proyecto está bajo la Licencia MIT - ver el archivo `LICENSE` para más detalles.
 
 ---
 
-Built with ❤️ by the Blockforge Team
+**Desarrollado con 💜 usando Astro + React + Tailwind CSS**
