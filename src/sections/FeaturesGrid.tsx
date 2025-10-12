@@ -22,8 +22,8 @@ const FeaturesGrid = () => {
                 Empowering the future of blockchain.
               </h2>
               <p className="text-xl lg:text-2xl text-zinc-400 mt-8">
-                Blockforge provides robust and secure infrastructure to support the next generation
-                of decentralized applications.
+                Blockforge provides robust and secure infrastructure to support
+                the next generation of decentralized applications.
               </p>
               <ul className="flex flex-col gap-8 mt-12 ">
                 {listItems.map((item) => (
@@ -37,7 +37,12 @@ const FeaturesGrid = () => {
               </ul>
               <div className="flex gap-8 mt-12">
                 <CutCornerButton>Get Started</CutCornerButton>
-                <TextButton> Learn More </TextButton>
+                <TextButton
+                  href="#blockchain-infrastructure"
+                  ariaLabel="Learn more about empowering the future of blockchain"
+                >
+                  Learn More
+                </TextButton>
               </div>
             </div>
             <div className="hidden md:block">
@@ -58,7 +63,11 @@ const FeaturesGrid = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             <div className="relative hidden md:block">
               <div className="absolute right-0  z-0">
-                <img src="/assets/images/cone.png" alt="Cone 3D" className="size-96 max-w-none " />
+                <img
+                  src="/assets/images/cone.png"
+                  alt="Cone 3D"
+                  className="size-96 max-w-none "
+                />
                 <img
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere 3d"
@@ -72,18 +81,26 @@ const FeaturesGrid = () => {
               </h2>
               <div className="flex flex-col text-xl lg:text-2xl text-zinc-400 mt-6 gap-6">
                 <p>
-                  Blockforge is dedicated to supporting the evolution of Web3 applications by
-                  delivering the necessary infrastructure and security for Web3.
+                  Blockforge is dedicated to supporting the evolution of Web3
+                  applications by delivering the necessary infrastructure and
+                  security for Web3.
                 </p>
                 <p>
-                  Blockforge champions Web3 for everyone. As a decentralized blockchain scaling
-                  platform, Blockforge enables developers to create scalable, user-friendly dApps
-                  with low transaction costs, all while ensuring robust security.
+                  Blockforge champions Web3 for everyone. As a decentralized
+                  blockchain scaling platform, Blockforge enables developers to
+                  create scalable, user-friendly dApps with low transaction
+                  costs, all while ensuring robust security.
                 </p>
               </div>
               <div className="flex gap-8 mt-12">
                 <CutCornerButton className="">Get Started</CutCornerButton>
-                <TextButton className=""> Learn More </TextButton>
+                <TextButton
+                  className=""
+                  href="#web3-platform"
+                  ariaLabel="Learn more about how Blockforge leads the way in Web3"
+                >
+                  Learn More
+                </TextButton>
               </div>
             </div>
           </div>

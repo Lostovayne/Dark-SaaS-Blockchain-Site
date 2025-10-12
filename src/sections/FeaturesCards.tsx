@@ -3,6 +3,39 @@ import { div } from "framer-motion/client";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+// Componente para imágenes optimizadas con WebP/AVIF
+const OptimizedImage = ({
+  src,
+  alt,
+  className,
+  loading = "lazy",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  loading?: "lazy" | "eager";
+}) => {
+  const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
+  const webpSrc =
+    srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
+  const avifSrc =
+    srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
+
+  return (
+    <picture>
+      <source srcSet={avifSrc} type="image/avif" />
+      <source srcSet={webpSrc} type="image/webp" />
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        loading={loading}
+        decoding="async"
+      />
+    </picture>
+  );
+};
+
 const cardData = [
   {
     image: "/assets/images/pill.png",
@@ -64,18 +97,28 @@ const FeaturesCardsSection = () => {
                   transform: `translateX(calc((-100% - 2rem) * ${selectedCardIndex}))`,
                 }}
               >
-                <Card key={title} className="max-w-xs md:max-w-md" pdbutton color={color}>
+                <Card
+                  key={title}
+                  className="max-w-xs md:max-w-md"
+                  pdbutton
+                  color={color}
+                  href="#features"
+                  linkLabel={`Learn more about ${title}`}
+                >
                   <div className="flex justify-center -mt-28">
                     <div className="inline-flex relative">
                       <div className="absolute h-4 w-full top-[calc(100%+16px)] bg-zinc-950/70 group-hover:bg-zinc-950/30 transition duration-300 rounded-[100%] mask-[radial-gradient(closest-side,black,transparent)]"></div>
-                      <img
+                      <OptimizedImage
                         src={image}
-                        alt="Pill"
+                        alt={title}
                         className="size-40 group-hover:-translate-y-6 transition duration-300"
+                        loading="lazy"
                       />
                     </div>
                   </div>
-                  <h3 className="font-heading font-black text-3xl mt-12">{title}</h3>
+                  <h3 className="font-heading font-black text-3xl mt-12">
+                    {title}
+                  </h3>
                   <p className="text-lg text-zinc-400 mt-4">{description}</p>
                 </Card>
               </div>
@@ -90,7 +133,7 @@ const FeaturesCardsSection = () => {
                 key={title}
                 className={twMerge(
                   "size-2.5 bg-zinc-500 rounded-full cursor-pointer",
-                  cardIndex === selectedCardIndex && "bg-zinc-300"
+                  cardIndex === selectedCardIndex && "bg-zinc-300",
                 )}
                 onClick={() => setSelectedCardIndex(cardIndex)}
               ></div>

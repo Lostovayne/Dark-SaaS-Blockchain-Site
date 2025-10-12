@@ -1,0 +1,42 @@
+# Cache Control Headers for Static Assets
+# This file works with Netlify, Cloudflare Pages, and similar platforms
+
+# Cache images for 1 year (immutable)
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache optimized images for 1 year
+/assets/images/optimized/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache fonts for 1 year
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache CSS and JS with hash for 1 year
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache SVG and icons for 1 month
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable
+
+# HTML pages - short cache with revalidation
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Root HTML
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Security headers for all routes
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()

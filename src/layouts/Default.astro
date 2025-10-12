@@ -8,15 +8,68 @@ import "../global.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blockchain Blog - Frontend Epsaind</title>
+    <meta name="description" content="The Future of Blockchain is Here. Blockforge is pioneering smart contract integrity with cutting-edge data solutions." />
+
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" />
+
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" as="style" />
+
+    <!-- Load fonts with display=swap for better performance -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/assets/images/icosahedron.png" fetchpriority="high" />
+
+    <!-- Performance hints -->
+    <meta name="theme-color" content="#09090b" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- DNS prefetch for any external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   </head>
-  <body>
+  <body class="antialiased">
     <slot />
+
+    <!-- Script para optimizar back/forward cache -->
+    <script>
+      // Evitar que el navegador descarte el back/forward cache
+      window.addEventListener('beforeunload', () => {
+        // No hacer nada pesado aquí
+      });
+
+      // Restaurar estado cuando se usa back/forward
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+          // La página fue restaurada desde bfcache
+          console.log('Page restored from bfcache');
+        }
+      });
+
+      // Optimizar para bfcache
+      window.addEventListener('pagehide', (event) => {
+        if (event.persisted) {
+          // La página puede ser guardada en bfcache
+          console.log('Page may be stored in bfcache');
+        }
+      });
+    </script>
   </body>
 </html>

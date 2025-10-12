@@ -7,9 +7,19 @@ const Card = (
     color?: string;
     buttonText?: string;
     pdbutton?: boolean;
-  }
+    href?: string;
+    linkLabel?: string;
+  },
 ) => {
-  const { color, children, className, buttonText, pdbutton = false } = props;
+  const {
+    color,
+    children,
+    className,
+    buttonText,
+    pdbutton = false,
+    href = "#",
+    linkLabel,
+  } = props;
 
   return (
     <div className={twMerge("relative z-0 p-8 md:p-10 group", className)}>
@@ -22,8 +32,9 @@ const Card = (
               ? "bg-cyan-500"
               : color === "violet"
                 ? "bg-violet-500"
-                : "bg-fuchsia-500"
-        )}></div>
+                : "bg-fuchsia-500",
+        )}
+      ></div>
 
       <div
         className={twMerge(
@@ -34,26 +45,41 @@ const Card = (
               ? "group-hover:bg-cyan-400 bg-cyan-500 "
               : color === "violet"
                 ? "group-hover:bg-violet-400  bg-violet-500  "
-                : "group-hover:bg-fuchsia-400  bg-fuchsia-500  "
-        )}></div>
+                : "group-hover:bg-fuchsia-400  bg-fuchsia-500  ",
+        )}
+      ></div>
 
-      <div className='absolute inset-0 bg-zinc-800 -z-10 rounded-2xl mask-[linear-gradient(225deg,transparent,transparent_40px,black_40px)]'></div>
+      <div className="absolute inset-0 bg-zinc-800 -z-10 rounded-2xl mask-[linear-gradient(225deg,transparent,transparent_40px,black_40px)]"></div>
       <div>{children}</div>
-      <div className={twMerge("flex justify-between mt-12 ", pdbutton ? "max-md:pb-7" : "")}>
-        <TextButton color={color}>{buttonText || "Learn more"}</TextButton>
+      <div
+        className={twMerge(
+          "flex justify-between mt-12 ",
+          pdbutton ? "max-md:pb-7" : "",
+        )}
+      >
+        <a
+          href={href}
+          aria-label={
+            linkLabel || buttonText || "Learn more about this feature"
+          }
+          className="inline-block"
+        >
+          <TextButton color={color}>{buttonText || "Learn more"}</TextButton>
+        </a>
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke='currentColor'
-          className='size-8 text-zinc-500  group-hover:text-zinc-300 transition duration-300
+          stroke="currentColor"
+          className="size-8 text-zinc-500  group-hover:text-zinc-300 transition duration-300
                                       -translate-x-2 group-hover:translate-x-0
-                                      '>
+                                      "
+        >
           <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            d='M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3'
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
           />
         </svg>
       </div>

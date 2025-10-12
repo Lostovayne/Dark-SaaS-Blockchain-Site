@@ -4,6 +4,38 @@ import { Hexagon } from "@/components/Hexagon";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+// Componente para imágenes optimizadas con WebP/AVIF
+const OptimizedImage = ({
+  src,
+  alt,
+  className,
+  style,
+  imgRef,
+  loading = "lazy",
+}: any) => {
+  const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
+  const webpSrc =
+    srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
+  const avifSrc =
+    srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
+
+  return (
+    <picture>
+      <source srcSet={avifSrc} type="image/avif" />
+      <source srcSet={webpSrc} type="image/webp" />
+      <motion.img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        loading={loading}
+        decoding="async"
+      />
+    </picture>
+  );
+};
+
 export const HeroSection = () => {
   // References to the elements
   const icosahedronRef = useRef<HTMLDivElement | null>(null);
@@ -12,7 +44,10 @@ export const HeroSection = () => {
   const cuboidRef = useRef<HTMLImageElement | null>(null);
 
   // Takes the scroll progress and uses it to animate the hexagon
-  const { scrollYProgress } = useScroll({ target: icosahedronRef, offset: ["start end", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: icosahedronRef,
+    offset: ["start end", "end start"],
+  });
 
   const { scrollYProgress: cubeScrollYProgress } = useScroll({
     target: cubeRef,
@@ -37,12 +72,15 @@ export const HeroSection = () => {
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container mx-auto">
-        <p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">Introducing Blockforge</p>
+        <p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">
+          Introducing Blockforge
+        </p>
         <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4 max-w-3xl mx-auto">
           The Future of Blockchain is Here.
         </h1>
         <p className="text-center text-xl md:text-2xl mt-6 text-zinc-400 max-w-xl mx-auto ">
-          Blockforge is pioneering smart contract integrity with cutting-edge data solutions.
+          Blockforge is pioneering smart contract integrity with cutting-edge
+          data solutions.
         </p>
         <div className="flex justify-center mt-10">
           <CutCornerButton className="">Get Started</CutCornerButton>
@@ -58,48 +96,59 @@ export const HeroSection = () => {
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] -top-[900px]" animate>
-                <motion.img
-                  ref={cubeRef}
+                <OptimizedImage
+                  imgRef={cubeRef}
                   style={{ rotate: CubeRotate, transitionDuration: "0.6s" }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
                   className="size-[140px]"
+                  loading="lazy"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute  left-[200px] top-[270px]" animate>
-                <motion.img
-                  ref={cuboidRef}
+                <OptimizedImage
+                  imgRef={cuboidRef}
                   style={{ rotate: CuboidRotate }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
                   className="size-[140px]"
+                  loading="lazy"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute -left-[600px] -top-[80px] ">
-                <motion.img
+                <OptimizedImage
+                  imgRef={torusRef}
                   style={{ rotate: TorusRotate }}
-                  ref={torusRef}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
                   className="size-[140px]"
+                  loading="lazy"
                 />
               </Circle>
             </div>
 
-            <motion.div style={{ rotate: IcosanhedronRotate }} className={"inline-flex"} ref={icosahedronRef}>
+            <motion.div
+              style={{ rotate: IcosanhedronRotate }}
+              className={"inline-flex"}
+              ref={icosahedronRef}
+            >
               <img
                 src="/assets/images/icosahedron.png"
                 className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-4 hue-rotate-240"
                 alt=""
               />
 
-              <img src="/assets/images/icosahedron.png" alt="Icosanhedron 3D" className="w-[500px]" />
+              <img
+                src="/assets/images/icosahedron.png"
+                alt="Icosanhedron 3D"
+                className="w-[500px]"
+              />
             </motion.div>
           </div>
         </div>
@@ -108,7 +157,9 @@ export const HeroSection = () => {
           <div className=" h-10 w-5  outline-[6px] outline-fuchsia-500/10 inline-flex justify-center pt-2 rounded-full">
             <div className="h-3 w-1 bg-fuchsia-500 rounded-full"></div>
           </div>
-          <p className="uppercase text-zinc-500 font-extrabold tracking-wider">Scroll to learn more</p>
+          <p className="uppercase text-zinc-500 font-extrabold tracking-wider">
+            Scroll to learn more
+          </p>
         </div>
       </div>
     </section>

@@ -1,0 +1,65 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = "",
+  loading = "lazy",
+  fetchpriority = "auto",
+} = Astro.props;
+
+// Extraer el nombre del archivo sin extensión
+const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
+const isInOptimized = src.includes("/optimized/");
+
+// Construir rutas para formatos optimizados
+const webpSrc = isInOptimized
+  ? src.replace(/\.(png|jpg|jpeg)$/i, ".webp")
+  : srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
+
+const avifSrc = isInOptimized
+  ? src.replace(/\.(png|jpg|jpeg)$/i, ".avif")
+  : srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
+---
+
+<picture>
+  <!-- AVIF: Mejor compresión, navegadores modernos -->
+  <source srcset={avifSrc} type="image/avif" />
+
+  <!-- WebP: Buena compresión, amplio soporte -->
+  <source srcset={webpSrc} type="image/webp" />
+
+  <!-- Fallback: Imagen original para navegadores antiguos -->
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+  />
+</picture>
+
+<style>
+  picture {
+    display: contents;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
