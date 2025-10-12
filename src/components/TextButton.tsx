@@ -11,14 +11,14 @@ export const TextButton = (props: TextButtonProps) => {
   const { className, children, color, href, ariaLabel, ...rest } = props;
 
   const baseStyles = twMerge(
-    "text-sm font-heading uppercase font-extrabold tracking-wider inline-block",
+    "text-sm font-heading uppercase font-extrabold tracking-wider inline-block min-h-[48px] min-w-[48px] flex items-center justify-center px-4 py-3",
     color === "lime"
-      ? "text-lime-500 hover:text-lime-400"
+      ? "text-lime-400 hover:text-lime-300"
       : color === "cyan"
-        ? "text-cyan-500 hover:text-cyan-400"
+        ? "text-cyan-400 hover:text-cyan-300"
         : color === "violet"
-          ? "text-violet-500 hover:text-violet-400"
-          : "text-fuchsia-500 hover:text-fuchsia-400",
+          ? "text-violet-400 hover:text-violet-300"
+          : "text-fuchsia-400 hover:text-fuchsia-300",
     "transition-colors duration-300",
     className,
   );

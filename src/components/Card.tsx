@@ -62,7 +62,7 @@ const Card = (
           aria-label={
             linkLabel || buttonText || "Learn more about this feature"
           }
-          className="inline-block"
+          className="min-h-[48px] flex items-center"
         >
           <TextButton color={color}>{buttonText || "Learn more"}</TextButton>
         </a>
@@ -70,11 +70,11 @@ const Card = (
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={2}
           stroke="currentColor"
-          className="size-8 text-zinc-500  group-hover:text-zinc-300 transition duration-300
-                                      -translate-x-2 group-hover:translate-x-0
-                                      "
+          className="size-8 text-zinc-300 group-hover:text-zinc-100 transition duration-300
+                                      -translate-x-2 group-hover:translate-x-0"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
