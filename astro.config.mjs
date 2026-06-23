@@ -3,19 +3,12 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
-
 import netlify from "@astrojs/netlify";
-import { cacheNetlify } from "@astrojs/netlify/cache";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    react({
-      // Optimización: Solo incluir componentes React explícitamente
-      include: ["**/react/**", "**/*.tsx", "**/*.jsx"],
-      // Excluir componentes Astro puros
-      exclude: ["**/astro/**"],
-    }),
+    react(),
     compress({
       CSS: true,
       HTML: {
@@ -23,18 +16,13 @@ export default defineConfig({
           removeAttributeQuotes: false,
         },
       },
-      Image: false, // Lo manejaremos manualmente
+      Image: false,
       JavaScript: true,
       SVG: true,
     }),
   ],
 
   output: "static",
-
-  // Astro 7: Netlify CDN cache provider para mejor rendimiento
-  cache: {
-    provider: cacheNetlify(),
-  },
 
   vite: {
     plugins: [tailwindcss()],
@@ -52,7 +40,6 @@ export default defineConfig({
       rollupOptions: {
         output: {
           manualChunks: (id) => {
-            // Code splitting optimizado para framer-motion
             if (id.includes("node_modules")) {
               if (id.includes("framer-motion")) {
                 return "framer-motion";
@@ -65,7 +52,6 @@ export default defineConfig({
           },
         },
       },
-      // Optimización: Limitar chunk size
       chunkSizeWarningLimit: 500,
     },
   },
@@ -75,7 +61,6 @@ export default defineConfig({
     remotePatterns: [],
   },
 
-  // Astro 7: JSX whitespace handling (nuevo default)
   compressHTML: "jsx",
 
   prefetch: {

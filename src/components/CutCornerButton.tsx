@@ -12,7 +12,7 @@ export const CutCornerButton = ({
         className,
       )}
     >
-      <div className="absolute inset-0  outline-2 -outline-offset-2 outline-fuchsia-500 mask-[linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
+      <div className="absolute inset-0  outline-solid outline-2 -outline-offset-2 outline-fuchsia-500 mask-[linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
       {/* Agregado el SVG aquí */}
       <svg
         width="24"
