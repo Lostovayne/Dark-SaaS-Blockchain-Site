@@ -1,10 +1,10 @@
 import Card from "@/components/Card";
-import { div } from "framer-motion/client";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 // Componente para imágenes optimizadas con WebP/AVIF
-const OptimizedImage = ({
+// Optimizado con React.memo para evitar re-renders innecesarios
+const OptimizedImage = memo(({
   src,
   alt,
   className,
@@ -34,7 +34,9 @@ const OptimizedImage = ({
       />
     </picture>
   );
-};
+});
+
+OptimizedImage.displayName = "OptimizedImage";
 
 const cardData = [
   {

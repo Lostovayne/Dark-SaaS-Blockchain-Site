@@ -2,17 +2,25 @@ import { Circle } from "@/components/Circle";
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { Hexagon } from "@/components/Hexagon";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 // Componente para imágenes optimizadas con WebP/AVIF
-const OptimizedImage = ({
+// Optimizado con React.memo para evitar re-renders innecesarios
+const OptimizedImage = memo(({
   src,
   alt,
   className,
   style,
   imgRef,
   loading = "lazy",
-}: any) => {
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  style?: any;
+  imgRef?: any;
+  loading?: "lazy" | "eager";
+}) => {
   const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
   const webpSrc =
     srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
@@ -34,7 +42,9 @@ const OptimizedImage = ({
       />
     </picture>
   );
-};
+});
+
+OptimizedImage.displayName = "OptimizedImage";
 
 export const HeroSection = () => {
   // References to the elements
