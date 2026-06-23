@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,19 +16,21 @@ export default defineConfig({
           removeAttributeQuotes: false,
         },
       },
-      Image: false, // Lo manejaremos manualmente
+      Image: false,
       JavaScript: true,
       SVG: true,
     }),
   ],
+
   output: "static",
+
   vite: {
     plugins: [tailwindcss()],
     build: {
       minify: "terser",
       terserOptions: {
         compress: {
-          drop_console: true, // Elimina console.logs en producción
+          drop_console: true,
           drop_debugger: true,
           pure_funcs: ["console.log", "console.info"],
         },
@@ -37,7 +40,6 @@ export default defineConfig({
       rollupOptions: {
         output: {
           manualChunks: (id) => {
-            // Code splitting inteligente
             if (id.includes("node_modules")) {
               if (id.includes("framer-motion")) {
                 return "framer-motion";
@@ -50,15 +52,21 @@ export default defineConfig({
           },
         },
       },
+      chunkSizeWarningLimit: 500,
     },
   },
+
   image: {
     domains: [],
     remotePatterns: [],
   },
-  compressHTML: true,
+
+  compressHTML: "jsx",
+
   prefetch: {
     prefetchAll: false,
     defaultStrategy: "viewport",
   },
+
+  adapter: netlify(),
 });
