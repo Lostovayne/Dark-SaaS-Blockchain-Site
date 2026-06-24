@@ -58,28 +58,6 @@
   .font-body {
     font-family: var(--font-body);
   }
-
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--container-padding-sm);
-    padding-right: var(--container-padding-sm);
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      padding-left: var(--container-padding-md);
-      padding-right: var(--container-padding-md);
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .container {
-      padding-left: var(--container-padding-lg);
-      padding-right: var(--container-padding-lg);
-    }
-  }
 }
 
 /* Custom utilities */

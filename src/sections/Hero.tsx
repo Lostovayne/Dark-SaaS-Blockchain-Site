@@ -5,47 +5,48 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { memo, useRef } from "react";
 
 // Componente para imágenes optimizadas con WebP/AVIF
-// Optimizado con React.memo para evitar re-renders innecesarios
-const OptimizedImage = memo(({
-  src,
-  alt,
-  className,
-  style,
-  initial,
-  imgRef,
-  loading = "lazy",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  style?: any;
-  initial?: any;
-  imgRef?: any;
-  loading?: "lazy" | "eager";
-}) => {
-  const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
-  const webpSrc =
-    srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
-  const avifSrc =
-    srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
+const OptimizedImage = memo(
+  ({
+    src,
+    alt,
+    className,
+    style,
+    initial,
+    imgRef,
+    loading = "lazy",
+  }: {
+    src: string;
+    alt: string;
+    className?: string;
+    style?: any;
+    initial?: any;
+    imgRef?: any;
+    loading?: "lazy" | "eager";
+  }) => {
+    const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
+    const webpSrc =
+      srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
+    const avifSrc =
+      srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
 
-  return (
-    <picture>
-      <source srcSet={avifSrc} type="image/avif" />
-      <source srcSet={webpSrc} type="image/webp" />
-      <motion.img
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        className={className}
-        style={style}
-        initial={initial}
-        loading={loading}
-        decoding="async"
-      />
-    </picture>
-  );
-});
+    return (
+      <picture>
+        <source srcSet={avifSrc} type="image/avif" />
+        <source srcSet={webpSrc} type="image/webp" />
+        <motion.img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          className={className}
+          style={style}
+          initial={initial}
+          loading={loading}
+          decoding="async"
+        />
+      </picture>
+    );
+  },
+);
 
 OptimizedImage.displayName = "OptimizedImage";
 
@@ -82,8 +83,6 @@ export const HeroSection = () => {
   const TorusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
   const CuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
 
-
-
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container mx-auto">
@@ -104,48 +103,48 @@ export const HeroSection = () => {
           <div className="inline-flex  relative z-0">
             {/* Agregando el marco en el centro */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Hexagon className="size-[1100px]" size={1100} />
+              <Hexagon className="size-275" size={1100} />
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Hexagon className="size-[1800px]" size={1800} />
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute left-[200px] -top-[900px]" animate>
+              <Circle className="absolute left-50 -top-225" animate>
                 <OptimizedImage
                   imgRef={cubeRef}
                   style={{ rotate: CubeRotate, transitionDuration: "0.6s" }}
                   initial={{ rotate: 100 }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
-                  className="size-[140px]"
+                  className="size-35"
                   loading="lazy"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute  left-[200px] top-[270px]" animate>
+              <Circle className="absolute  left-50 top-67.5" animate>
                 <OptimizedImage
                   imgRef={cuboidRef}
                   style={{ rotate: CuboidRotate }}
                   initial={{ rotate: 20 }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
-                  className="size-[140px]"
+                  className="size-35"
                   loading="lazy"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute -left-[600px] -top-[80px] ">
+              <Circle className="absolute -left-150 -top-20 ">
                 <OptimizedImage
                   imgRef={torusRef}
                   style={{ rotate: TorusRotate }}
                   initial={{ rotate: 20 }}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
-                  className="size-[140px]"
+                  className="size-35"
                   loading="lazy"
                 />
               </Circle>
@@ -166,7 +165,7 @@ export const HeroSection = () => {
               <img
                 src="/assets/images/icosahedron.png"
                 alt="Icosanhedron 3D"
-                className="w-[500px]"
+                className="w-125"
               />
             </motion.div>
           </div>

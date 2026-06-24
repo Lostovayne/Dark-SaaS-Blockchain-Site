@@ -45,25 +45,25 @@ export const Footer = () => {
           <nav className="hidden md:flex text-zinc-300 font-heading font-black gap-12">
             <a
               href="#"
-              className="min-h-[48px] min-w-[48px] flex items-center hover:text-zinc-100 transition-colors"
+              className="min-h-12 min-w-12 flex items-center hover:text-zinc-100 transition-colors"
             >
               Home
             </a>
             <a
               href="#"
-              className="min-h-[48px] min-w-[48px] flex items-center hover:text-zinc-100 transition-colors"
+              className="min-h-12 min-w-12 flex items-center hover:text-zinc-100 transition-colors"
             >
               Blog
             </a>
             <a
               href="#"
-              className="min-h-[48px] min-w-[48px] flex items-center hover:text-zinc-100 transition-colors"
+              className="min-h-12 min-w-12 flex items-center hover:text-zinc-100 transition-colors"
             >
               Careers
             </a>
             <a
               href="#"
-              className="min-h-[48px] min-w-[48px] flex items-center hover:text-zinc-100 transition-colors"
+              className="min-h-12 min-w-12 flex items-center hover:text-zinc-100 transition-colors"
             >
               Contact
             </a>
@@ -78,7 +78,7 @@ export const Footer = () => {
               <a
                 href="#"
                 key={`${iconIndex}-icon`}
-                className="inline-flex min-h-[48px] min-w-[48px] bg-zinc-800 rounded-full items-center justify-center hover:bg-zinc-700 transition-colors"
+                className="inline-flex min-h-12 min-w-12 bg-zinc-800 rounded-full items-center justify-center hover:bg-zinc-700 transition-colors"
                 aria-label={`Social media link ${iconIndex + 1}`}
               >
                 {icon.icon}

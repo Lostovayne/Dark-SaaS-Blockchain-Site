@@ -71,6 +71,34 @@ import "../global.css";
         white-space: nowrap;
         border-width: 0;
       }
+
+      /*
+       * Container responsive — unlayered so it overrides Tailwind's .container
+       * Tailwind v4 strips @media inside @layer, so these MUST live here.
+       */
+      .container {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--container-padding-sm);
+        padding-right: var(--container-padding-sm);
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+          padding-left: var(--container-padding-md);
+          padding-right: var(--container-padding-md);
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1200px;
+          padding-left: var(--container-padding-lg);
+          padding-right: var(--container-padding-lg);
+        }
+      }
     </style>
 
     <!-- Script para optimizar back/forward cache -->

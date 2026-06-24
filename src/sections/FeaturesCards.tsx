@@ -3,38 +3,39 @@ import { memo, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 // Componente para imágenes optimizadas con WebP/AVIF
-// Optimizado con React.memo para evitar re-renders innecesarios
-const OptimizedImage = memo(({
-  src,
-  alt,
-  className,
-  loading = "lazy",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  loading?: "lazy" | "eager";
-}) => {
-  const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
-  const webpSrc =
-    srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
-  const avifSrc =
-    srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
+const OptimizedImage = memo(
+  ({
+    src,
+    alt,
+    className,
+    loading = "lazy",
+  }: {
+    src: string;
+    alt: string;
+    className?: string;
+    loading?: "lazy" | "eager";
+  }) => {
+    const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
+    const webpSrc =
+      srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
+    const avifSrc =
+      srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
 
-  return (
-    <picture>
-      <source srcSet={avifSrc} type="image/avif" />
-      <source srcSet={webpSrc} type="image/webp" />
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        loading={loading}
-        decoding="async"
-      />
-    </picture>
-  );
-});
+    return (
+      <picture>
+        <source srcSet={avifSrc} type="image/avif" />
+        <source srcSet={webpSrc} type="image/webp" />
+        <img
+          src={src}
+          alt={alt}
+          className={className}
+          loading={loading}
+          decoding="async"
+        />
+      </picture>
+    );
+  },
+);
 
 OptimizedImage.displayName = "OptimizedImage";
 

@@ -8,7 +8,10 @@ export default defineConfig({
   integrations: [
     react(),
     compress({
-      CSS: true,
+      // CSS: false — Vite already handles CSS minification via cssMinify:true.
+      // astro-compress CSS:true strips inline <style> from layouts, breaking
+      // the responsive .container that Tailwind v4 cannot output.
+      CSS: false,
       HTML: {
         "html-minifier-terser": {
           removeAttributeQuotes: false,

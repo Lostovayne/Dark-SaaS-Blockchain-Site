@@ -21,17 +21,12 @@ const latestPosts = posts
 
 <DefaultLayout>
   <HeaderSection />
-  <!-- Hero: client:visible carga solo cuando es visible en el viewport -->
-  <!-- Esto evita que framer-motion bloquee el paint inicial -->
   <HeroSection client:visible>
     <div slot="fallback" class="min-h-screen"></div>
   </HeroSection>
-  <!-- FeaturesCards: client:visible para carousel interactivo -->
   <FeaturesCardsSection client:visible />
-  <!-- FeaturesGrid: Static - sin JavaScript, carga instantánea -->
   <FeaturesGrid />
   <LatestPosts latestPosts={latestPosts} />
-  <!-- Testimonials: Static - sin JavaScript -->
   <TestimonialsSection />
   <CallToActionSection />
   <Footer />
