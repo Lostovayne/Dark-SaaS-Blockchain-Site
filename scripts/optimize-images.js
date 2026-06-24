@@ -34,6 +34,17 @@ const optimizeImages = async () => {
       const outputPathWebP = path.join(OUTPUT_DIR, `${outputFileName}.webp`);
       const outputPathAVIF = path.join(OUTPUT_DIR, `${outputFileName}.avif`);
 
+      // Skip if both WebP and AVIF already exist and are newer than source
+      if (fs.existsSync(outputPathWebP) && fs.existsSync(outputPathAVIF)) {
+        const webpMtime = fs.statSync(outputPathWebP).mtime;
+        const avifMtime = fs.statSync(outputPathAVIF).mtime;
+        const sourceMtime = fs.statSync(inputPath).mtime;
+        if (webpMtime >= sourceMtime && avifMtime >= sourceMtime) {
+          console.log(`⏭️  Skipping ${file} (already optimized)`);
+          continue;
+        }
+      }
+
       console.log(`⚙️  Processing: ${file}`);
 
       // Obtener tamaño original

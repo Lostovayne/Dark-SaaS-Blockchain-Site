@@ -11,6 +11,7 @@ const OptimizedImage = memo(({
   alt,
   className,
   style,
+  initial,
   imgRef,
   loading = "lazy",
 }: {
@@ -18,6 +19,7 @@ const OptimizedImage = memo(({
   alt: string;
   className?: string;
   style?: any;
+  initial?: any;
   imgRef?: any;
   loading?: "lazy" | "eager";
 }) => {
@@ -37,6 +39,7 @@ const OptimizedImage = memo(({
         alt={alt}
         className={className}
         style={style}
+        initial={initial}
         loading={loading}
         decoding="async"
       />
@@ -79,6 +82,8 @@ export const HeroSection = () => {
   const TorusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
   const CuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
 
+
+
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container mx-auto">
@@ -109,6 +114,7 @@ export const HeroSection = () => {
                 <OptimizedImage
                   imgRef={cubeRef}
                   style={{ rotate: CubeRotate, transitionDuration: "0.6s" }}
+                  initial={{ rotate: 100 }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
                   className="size-[140px]"
@@ -122,6 +128,7 @@ export const HeroSection = () => {
                 <OptimizedImage
                   imgRef={cuboidRef}
                   style={{ rotate: CuboidRotate }}
+                  initial={{ rotate: 20 }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
                   className="size-[140px]"
@@ -135,6 +142,7 @@ export const HeroSection = () => {
                 <OptimizedImage
                   imgRef={torusRef}
                   style={{ rotate: TorusRotate }}
+                  initial={{ rotate: 20 }}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
                   className="size-[140px]"
@@ -145,6 +153,7 @@ export const HeroSection = () => {
 
             <motion.div
               style={{ rotate: IcosanhedronRotate }}
+              initial={{ rotate: 30 }}
               className={"inline-flex"}
               ref={icosahedronRef}
             >
