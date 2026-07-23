@@ -7,14 +7,17 @@
     "start": "astro dev",
     "build": "astro build",
     "check": "astro check",
-    "preview": "astro preview",
+    "preview": "bun run build && wrangler dev",
     "astro": "astro",
     "optimize:images": "node scripts/optimize-images.js",
-    "prebuild": "bun run optimize:images"
+    "prebuild": "npm run optimize:images",
+    "generate-types": "wrangler types",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",
-    "@astrojs/react": "6.0.1",
+    "@astrojs/cloudflare": "^14.0.0",
+    "@astrojs/react": "6.0.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.17",
@@ -29,7 +32,8 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "prettier": "^3.9.6",
-    "prettier-plugin-tailwindcss": "^0.6.14"
+    "prettier": "^3.8.4",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "wrangler": "^4.104.0"
   }
 }
