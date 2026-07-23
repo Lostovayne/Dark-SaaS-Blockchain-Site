@@ -1,43 +1,7 @@
+import { OptimizedImage } from "@/components/OptimizedImage";
 import Card from "@/components/Card";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-
-// Componente para imágenes optimizadas con WebP/AVIF
-const OptimizedImage = memo(
-  ({
-    src,
-    alt,
-    className,
-    loading = "lazy",
-  }: {
-    src: string;
-    alt: string;
-    className?: string;
-    loading?: "lazy" | "eager";
-  }) => {
-    const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
-    const webpSrc =
-      srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
-    const avifSrc =
-      srcWithoutExt.replace("/images/", "/images/optimized/") + ".avif";
-
-    return (
-      <picture>
-        <source srcSet={avifSrc} type="image/avif" />
-        <source srcSet={webpSrc} type="image/webp" />
-        <img
-          src={src}
-          alt={alt}
-          className={className}
-          loading={loading}
-          decoding="async"
-        />
-      </picture>
-    );
-  },
-);
-
-OptimizedImage.displayName = "OptimizedImage";
 
 const cardData = [
   {
@@ -51,7 +15,7 @@ const cardData = [
     image: "/assets/images/cuboid.png",
     title: "Decentralized Data Solutions",
     description:
-      "Empower your applucations with decentralized data solutions, ensuring security and transparency at every step",
+      "Empower your applications with decentralized data solutions, ensuring security and transparency at every step",
     color: "lime",
   },
   {
@@ -63,7 +27,7 @@ const cardData = [
   },
   {
     image: "/assets/images/icosahedron.png",
-    title: "Seamless Bloockchain Integration",
+    title: "Seamless Blockchain Integration",
     description:
       "Integrate blockchain technology seamlessly into your projects, with minimal effort and maximum efficiency",
     color: "violet",
