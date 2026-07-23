@@ -1,5 +1,6 @@
 ---
 import "../global.css";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -17,33 +18,21 @@ import "../global.css";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" as="style" />
-
-    <!-- Load fonts with display=swap for better performance -->
+    <!-- Fonts: single request with display=swap for FOIT prevention -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Karla:wght@200..800&display=swap"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
 
-    <!-- Preload critical images -->
+    <!-- Preload critical above-the-fold image -->
     <link rel="preload" as="image" href="/assets/images/icosahedron.png" fetchpriority="high" />
+
+    <!-- Client-side routing for SPA-like navigation -->
+    <ClientRouter />
 
     <!-- Performance hints -->
     <meta name="theme-color" content="#09090b" />
     <meta name="color-scheme" content="dark" />
-
-    <!-- DNS prefetch for any external resources -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   </head>
   <body class="antialiased">
     <!-- Skip link para accesibilidad -->
@@ -59,19 +48,6 @@ import "../global.css";
     </main>
 
     <style>
-      /* Clase para ocultar visualmente pero mantener accesible */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-      }
-
       /*
        * Container responsive — unlayered so it overrides Tailwind's .container
        * Tailwind v4 strips @media inside @layer, so these MUST live here.
@@ -100,29 +76,5 @@ import "../global.css";
         }
       }
     </style>
-
-    <!-- Script para optimizar back/forward cache -->
-    <script>
-      // Evitar que el navegador descarte el back/forward cache
-      window.addEventListener('beforeunload', () => {
-        // No hacer nada pesado aquí
-      });
-
-      // Restaurar estado cuando se usa back/forward
-      window.addEventListener('pageshow', (event) => {
-        if (event.persisted) {
-          // La página fue restaurada desde bfcache
-          console.log('Page restored from bfcache');
-        }
-      });
-
-      // Optimizar para bfcache
-      window.addEventListener('pagehide', (event) => {
-        if (event.persisted) {
-          // La página puede ser guardada en bfcache
-          console.log('Page may be stored in bfcache');
-        }
-      });
-    </script>
   </body>
 </html>
