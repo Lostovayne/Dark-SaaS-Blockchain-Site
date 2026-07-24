@@ -17,8 +17,10 @@ import "../global.css";
     <link rel="preload" href="/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/karla-variable.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preload critical above-the-fold image -->
-    <link rel="preload" as="image" href="/assets/images/optimized/icosahedron.avif" type="image/avif" fetchpriority="high" />
+    <!-- Preload critical above-the-fold images (Header logo, Hero main LCP & Cube) -->
+    <link rel="preload" href="/assets/images/logo.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preload" href="/assets/images/optimized/icosahedron.avif" as="image" type="image/avif" fetchpriority="high" />
+    <link rel="preload" href="/assets/images/optimized/cube.avif" as="image" type="image/avif" fetchpriority="high" />
 
     <!-- Performance hints -->
     <meta name="theme-color" content="#09090b" />

@@ -60,6 +60,7 @@ interface AnimatedImageProps {
   style?: MotionAnyStyle;
   imgRef?: React.Ref<HTMLImageElement>;
   loading?: "lazy" | "eager";
+  fetchPriority?: "high" | "low" | "auto";
 }
 
 // Optimized image with framer-motion for scroll animations
@@ -70,6 +71,7 @@ const AnimatedImage = ({
   style,
   imgRef,
   loading = "lazy",
+  fetchPriority,
 }: AnimatedImageProps) => {
   const cleanPath = src.replace(/\.(png|jpg|jpeg)$/i, "");
   const base = cleanPath.replace(
@@ -91,6 +93,8 @@ const AnimatedImage = ({
         style={style}
         initial={false}
         loading={loading}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        fetchPriority={fetchPriority as any}
         decoding="async"
       />
     </picture>
@@ -141,34 +145,35 @@ export const HeroSection = () => {
                   style={{ rotate: CubeRotate }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
-                  className="size-35	"
+                  className="size-35"
                   loading="eager"
+                  fetchPriority="high"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute  left-50 top-67.5" animate>
+              <Circle className="absolute left-50 top-67.5" animate>
                 <AnimatedImage
                   imgRef={cuboidRef}
                   style={{ rotate: CuboidRotate }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
                   className="size-35 rotate-20"
-                  loading="eager"
+                  loading="lazy"
                 />
               </Circle>
             </div>
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Circle className="absolute -left-150 -top-20 ">
+              <Circle className="absolute -left-150 -top-20">
                 <AnimatedImage
                   imgRef={torusRef}
                   style={{ rotate: TorusRotate }}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
                   className="size-35 rotate-20"
-                  loading="eager"
+                  loading="lazy"
                 />
               </Circle>
             </div>
@@ -183,8 +188,7 @@ export const HeroSection = () => {
                 src="/assets/images/icosahedron.png"
                 className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-4 hue-rotate-240"
                 alt=""
-                loading="eager"
-                fetchPriority="high"
+                loading="lazy"
               />
 
               <OptimizedImage
