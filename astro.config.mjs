@@ -12,6 +12,10 @@ export default defineConfig({
 
   compressHTML: true,
 
+  build: {
+    inlineStylesheets: "always",
+  },
+
   vite: {
     plugins: [tailwindcss()],
     build: {

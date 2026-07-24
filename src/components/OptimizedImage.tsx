@@ -5,6 +5,7 @@ interface OptimizedImageProps {
   alt: string;
   className?: string;
   loading?: "lazy" | "eager";
+  fetchPriority?: "high" | "low" | "auto";
   width?: number;
   height?: number;
 }
