@@ -1,8 +1,41 @@
 import { Circle } from "@/components/Circle";
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { Hexagon } from "@/components/Hexagon";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useMotionValue } from "framer-motion";
+import { useLayoutEffect, useRef } from "react";
+
+// Custom hook that replaces useScroll + useTransform for element-scroll rotation.
+// Uses useLayoutEffect to measure the element's actual position on the client
+// and set the correct rotation BEFORE the browser paints — no SSR→client jump.
+function useElementScrollRotation(
+  ref: React.RefObject<Element | null>,
+  startAngle: number,
+  endAngle: number
+) {
+  const rotate = useMotionValue(startAngle);
+
+  useLayoutEffect(() => {
+    const cb = () => {
+      const el = ref.current;
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // offset: ["start end", "end start"] — when element top
+      // aligns with viewport bottom, progress = 0.
+      const totalDist = vh + rect.height;
+      const currentPos = vh - rect.top;
+      const progress = Math.max(0, Math.min(1, currentPos / totalDist));
+      rotate.set(startAngle + (endAngle - startAngle) * progress);
+    };
+
+    cb(); // Set correct initial value immediately (before browser paints)
+    window.addEventListener("scroll", cb, { passive: true });
+    return () => window.removeEventListener("scroll", cb);
+  }, [ref, startAngle, endAngle]);
+
+  return rotate;
+}
 
 interface AnimatedImageProps {
   src: string;
@@ -53,31 +86,10 @@ export const HeroSection = () => {
   const torusRef = useRef<HTMLImageElement | null>(null);
   const cuboidRef = useRef<HTMLImageElement | null>(null);
 
-  // Takes the scroll progress and uses it to animate the hexagon
-  const { scrollYProgress } = useScroll({
-    target: icosahedronRef,
-    offset: ["start end", "end start"],
-  });
-
-  const { scrollYProgress: cubeScrollYProgress } = useScroll({
-    target: cubeRef,
-    offset: ["start end", "end start"],
-  });
-
-  const { scrollYProgress: torusScrollYProgress } = useScroll({
-    target: torusRef,
-    offset: ["start end", "end start"],
-  });
-
-  const { scrollYProgress: cuboidScrollYProgress } = useScroll({
-    target: cuboidRef,
-    offset: ["start end", "end start"],
-  });
-
-  const IcosahedronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
-  const CubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
-  const TorusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
-  const CuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
+  const IcosahedronRotate = useElementScrollRotation(icosahedronRef, 30, -45);
+  const CubeRotate = useElementScrollRotation(cubeRef, 100, -45);
+  const TorusRotate = useElementScrollRotation(torusRef, 20, -20);
+  const CuboidRotate = useElementScrollRotation(cuboidRef, 20, -20);
 
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
