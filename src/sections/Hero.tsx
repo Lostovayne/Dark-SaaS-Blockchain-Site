@@ -87,7 +87,7 @@ export const HeroSection = () => {
   const cuboidRef = useRef<HTMLImageElement | null>(null);
 
   const IcosahedronRotate = useElementScrollRotation(icosahedronRef, 30, -45);
-  const CubeRotate = useElementScrollRotation(cubeRef, 100, -45);
+  const CubeRotate = useElementScrollRotation(cubeRef, 30, -30);
   const TorusRotate = useElementScrollRotation(torusRef, 20, -20);
   const CuboidRotate = useElementScrollRotation(cuboidRef, 20, -20);
 
@@ -123,7 +123,7 @@ export const HeroSection = () => {
                   style={{ rotate: CubeRotate }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
-                  className="size-35 [rotate:100deg]"
+                  className="size-35 [rotate:30deg]"
                   loading="lazy"
                 />
               </Circle>
