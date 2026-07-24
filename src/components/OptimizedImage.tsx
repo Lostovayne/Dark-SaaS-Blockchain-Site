@@ -61,7 +61,7 @@ export const OptimizedImage = memo(
     }
 
     return (
-      <picture>
+      <picture style={{ display: "contents" }}>
         <source srcSet={avif} type="image/avif" />
         <source srcSet={webp} type="image/webp" />
         <img

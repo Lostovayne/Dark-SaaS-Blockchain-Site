@@ -70,7 +70,7 @@ const FeaturesGrid = () => {
                 <OptimizedImage
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere 3d"
-                  className="absolute top-3/4 -z-10"
+                  className="absolute size-96 max-w-none top-3/4 -z-10"
                 />
               </div>
             </div>

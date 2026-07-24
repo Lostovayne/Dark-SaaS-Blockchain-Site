@@ -80,7 +80,7 @@ const AnimatedImage = ({
   const avifSrc = `${base}.avif`;
 
   return (
-    <picture>
+    <picture style={{ display: "contents" }}>
       <source srcSet={avifSrc} type="image/avif" />
       <source srcSet={webpSrc} type="image/webp" />
       <motion.img
