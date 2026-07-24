@@ -184,6 +184,7 @@ export const HeroSection = () => {
                 className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-4 hue-rotate-240"
                 alt=""
                 loading="eager"
+                fetchPriority="high"
               />
 
               <OptimizedImage
@@ -191,6 +192,7 @@ export const HeroSection = () => {
                 alt="Icosanhedron 3D"
                 className="w-125"
                 loading="eager"
+                fetchPriority="high"
               />
             </motion.div>
           </div>

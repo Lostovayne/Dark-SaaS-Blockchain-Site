@@ -41,6 +41,7 @@ export const OptimizedImage = memo(
     alt,
     className,
     loading = "lazy",
+    fetchPriority,
     width,
     height,
   }: OptimizedImageProps) => {
@@ -53,9 +54,10 @@ export const OptimizedImage = memo(
           alt={alt}
           className={className}
           loading={loading}
+          fetchPriority={fetchPriority}
           decoding="async"
-          width={width}
-          height={height}
+          width={width || 500}
+          height={height || 500}
         />
       );
     }
@@ -69,9 +71,10 @@ export const OptimizedImage = memo(
           alt={alt}
           className={className}
           loading={loading}
+          fetchPriority={fetchPriority}
           decoding="async"
-          width={width}
-          height={height}
+          width={width || 500}
+          height={height || 500}
         />
       </picture>
     );
