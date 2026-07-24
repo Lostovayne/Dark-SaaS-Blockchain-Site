@@ -12,7 +12,8 @@
     "optimize:images": "node scripts/optimize-images.js",
     "prebuild": "npm run optimize:images",
     "generate-types": "wrangler types",
-    "deploy": "bun run build && wrangler deploy"
+    "deploy": "bun run build && wrangler deploy",
+    "prepare": "npx skilld prepare || true"
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",

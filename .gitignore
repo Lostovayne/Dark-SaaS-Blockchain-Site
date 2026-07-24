@@ -33,3 +33,12 @@ pnpm-debug.log*
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# Skilld references (recreated by `skilld install`)
+.skilld
+
+# Unlighthouse reports
+.unlighthouse/
+
+# CodeGraph index
+.codegraph/
