@@ -10,7 +10,7 @@ export default defineConfig({
 
   output: "static",
 
-  compressHTML: false,
+  compressHTML: true,
 
   vite: {
     plugins: [tailwindcss()],
@@ -35,7 +35,7 @@ export default defineConfig({
 
   prefetch: {
     prefetchAll: false,
-    defaultStrategy: "viewport",
+    defaultStrategy: "hover",
   },
 
   adapter: cloudflare(),

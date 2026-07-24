@@ -1,3 +1,4 @@
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { twMerge } from "tailwind-merge";
 
 const testimonials = [
@@ -40,11 +41,13 @@ export const TestimonialsSection = () => {
               <cite className="mt-8 block">
                 <div className="flex gap-3 items-center">
                   <div>
-                    <div
-                      className="size-16 bg-zinc-700 rounded-full bg-cover"
-                      style={{
-                        backgroundImage: `url(${testimonial.avatarImage})`,
-                      }}
+                    <OptimizedImage
+                      src={testimonial.avatarImage}
+                      alt={testimonial.name}
+                      className="size-16 bg-zinc-700 rounded-full object-cover"
+                      loading="lazy"
+                      width={64}
+                      height={64}
                     />
                   </div>
                   <div>

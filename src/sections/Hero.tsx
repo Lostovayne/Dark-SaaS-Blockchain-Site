@@ -71,11 +71,13 @@ const AnimatedImage = ({
   imgRef,
   loading = "lazy",
 }: AnimatedImageProps) => {
-  const srcWithoutExt = src.replace(/\.(png|jpg|jpeg)$/i, "");
-  const webpSrc =
-    srcWithoutExt.replace("/images/", "/images/optimized/") + ".webp";
-  const avifSrc =
-    srcWithoutExt.replace("/images", "/images/optimized/") + ".avif";
+  const cleanPath = src.replace(/\.(png|jpg|jpeg)$/i, "");
+  const base = cleanPath.replace(
+    "/assets/images/",
+    "/assets/images/optimized/",
+  );
+  const webpSrc = `${base}.webp`;
+  const avifSrc = `${base}.avif`;
 
   return (
     <picture>
@@ -83,7 +85,7 @@ const AnimatedImage = ({
       <source srcSet={webpSrc} type="image/webp" />
       <motion.img
         ref={imgRef}
-        src={src}
+        src={webpSrc}
         alt={alt}
         className={className}
         style={style}

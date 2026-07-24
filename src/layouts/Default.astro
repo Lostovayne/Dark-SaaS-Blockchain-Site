@@ -20,12 +20,12 @@ import { ClientRouter } from "astro:transitions";
 
     <!-- Fonts: single request with display=swap for FOIT prevention -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Karla:wght@200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Karla:wght@400;700;800&display=swap"
       rel="stylesheet"
     />
 
     <!-- Preload critical above-the-fold image -->
-    <link rel="preload" as="image" href="/assets/images/icosahedron.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/images/optimized/icosahedron.avif" type="image/avif" fetchpriority="high" />
 
     <!-- Client-side routing for SPA-like navigation -->
     <ClientRouter />
