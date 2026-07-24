@@ -167,7 +167,7 @@ export const HeroSection = () => {
                   style={{ rotate: TorusRotate }}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
-                  className="size-35 [rotate:20deg]"
+                  className="size-35 rotate-20"
                   loading="eager"
                 />
               </Circle>
@@ -175,8 +175,8 @@ export const HeroSection = () => {
 
             <motion.div
               style={{ rotate: IcosahedronRotate }}
-              initial={false}
-              className="inline-flex [rotate:30deg]"
+              initial={{ rotate: 30 }}
+              className="inline-flex"
               ref={icosahedronRef}
             >
               <OptimizedImage

@@ -1,6 +1,5 @@
 ---
 import "../global.css";
-import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -20,9 +19,6 @@ import { ClientRouter } from "astro:transitions";
 
     <!-- Preload critical above-the-fold image -->
     <link rel="preload" as="image" href="/assets/images/optimized/icosahedron.avif" type="image/avif" fetchpriority="high" />
-
-    <!-- Client-side routing for SPA-like navigation -->
-    <ClientRouter />
 
     <!-- Performance hints -->
     <meta name="theme-color" content="#09090b" />
