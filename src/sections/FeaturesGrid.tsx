@@ -1,6 +1,6 @@
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { TextButton } from "@/components/TextButton";
-import { useRef } from "react";
 
 const listItems = [
   "Experience unparalleled security and scalability",
@@ -9,8 +9,7 @@ const listItems = [
 ];
 
 const FeaturesGrid = () => {
-  const torusKnotRef = useRef(null);
-  const firstHemisphereRef = useRef(null);
+
 
   return (
     <section className="py-24 overflow-x-clip">
@@ -47,12 +46,12 @@ const FeaturesGrid = () => {
             </div>
             <div className="hidden md:block">
               <div className="relative inline-flex z-0">
-                <img
+                <OptimizedImage
                   src="/assets/images/torus-knot.png"
                   alt="Torus Knot"
                   className="size-96 max-w-none"
                 />
-                <img
+                <OptimizedImage
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere 3d"
                   className="absolute  size-96 top-3/4 -z-10 scale-x-[-1]"
@@ -63,15 +62,15 @@ const FeaturesGrid = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             <div className="relative hidden md:block">
               <div className="absolute right-0  z-0">
-                <img
+                <OptimizedImage
                   src="/assets/images/cone.png"
                   alt="Cone 3D"
-                  className="size-96 max-w-none "
+                  className="size-96 max-w-none"
                 />
-                <img
+                <OptimizedImage
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere 3d"
-                  className="absolute top-3/4 -z-10 "
+                  className="absolute top-3/4 -z-10"
                 />
               </div>
             </div>

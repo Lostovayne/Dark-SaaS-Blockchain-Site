@@ -1,6 +1,7 @@
 import { Circle } from "@/components/Circle";
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { Hexagon } from "@/components/Hexagon";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const CallToActionSection = () => {
   return (
@@ -15,7 +16,7 @@ export const CallToActionSection = () => {
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Circle className="absolute left-0 -top-100">
-              <img
+              <OptimizedImage
                 src="/assets/images/cuboid.png"
                 alt="Cuboid"
                 className="size-35"
@@ -24,7 +25,7 @@ export const CallToActionSection = () => {
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Circle className="absolute -left-150 -top-17.5">
-              <img
+              <OptimizedImage
                 src="/assets/images/cylinder.png"
                 alt="Cylinder"
                 className="size-35"

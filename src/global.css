@@ -10,6 +10,13 @@
 }
 
 @layer base {
+  /* Skip rendering offscreen sections — no image loading, no layout, no paint.
+     Browser automatically renders them when scrolled near. */
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
+  }
+
   body {
     @apply antialiased bg-zinc-900 text-zinc-300 font-body;
   }

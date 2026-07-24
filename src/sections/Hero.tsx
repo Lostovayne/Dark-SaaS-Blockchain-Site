@@ -1,47 +1,63 @@
 import { Circle } from "@/components/Circle";
 import { CutCornerButton } from "@/components/CutCornerButton";
 import { Hexagon } from "@/components/Hexagon";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { motion, useMotionValue } from "framer-motion";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-// Custom hook that replaces useScroll + useTransform for element-scroll rotation.
-// Uses useLayoutEffect to measure the element's actual position on the client
-// and set the correct rotation BEFORE the browser paints — no SSR→client jump.
+// Hook that applies scroll-based rotation ONLY on user scroll.
+// CSS fallback handles the initial position so hydration is clean.
+// First scroll event syncs the MotionValue and takes over from there.
 function useElementScrollRotation(
   ref: React.RefObject<Element | null>,
   startAngle: number,
-  endAngle: number
+  endAngle: number,
 ) {
   const rotate = useMotionValue(startAngle);
+  const active = useRef(false);
 
-  useLayoutEffect(() => {
-    const cb = () => {
-      const el = ref.current;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const onScroll = () => {
       if (!el) return;
+
+      // First scroll: read the actual CSS-computed rotation
+      // so the MotionValue starts from the element's current position.
+      if (!active.current) {
+        active.current = true;
+        const css = getComputedStyle(el).rotate;
+        if (css && css !== "none") {
+          const m = css.match(/([\d.-]+)deg/);
+          if (m) rotate.set(parseFloat(m[1]));
+        }
+      }
 
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // offset: ["start end", "end start"] — when element top
-      // aligns with viewport bottom, progress = 0.
-      const totalDist = vh + rect.height;
-      const currentPos = vh - rect.top;
-      const progress = Math.max(0, Math.min(1, currentPos / totalDist));
+      const progress = Math.max(
+        0,
+        Math.min(1, (vh - rect.top) / (vh + rect.height)),
+      );
       rotate.set(startAngle + (endAngle - startAngle) * progress);
     };
 
-    cb(); // Set correct initial value immediately (before browser paints)
-    window.addEventListener("scroll", cb, { passive: true });
-    return () => window.removeEventListener("scroll", cb);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [ref, startAngle, endAngle]);
 
   return rotate;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type MotionAnyStyle = Record<string, any>;
+
 interface AnimatedImageProps {
   src: string;
   alt: string;
   className?: string;
-  style?: React.CSSProperties;
+  style?: MotionAnyStyle;
   imgRef?: React.Ref<HTMLImageElement>;
   loading?: "lazy" | "eager";
 }
@@ -123,8 +139,8 @@ export const HeroSection = () => {
                   style={{ rotate: CubeRotate }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
-                  className="size-35 [rotate:30deg]"
-                  loading="lazy"
+                  className="size-35	"
+                  loading="eager"
                 />
               </Circle>
             </div>
@@ -136,8 +152,8 @@ export const HeroSection = () => {
                   style={{ rotate: CuboidRotate }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
-                  className="size-35 [rotate:20deg]"
-                  loading="lazy"
+                  className="size-35 rotate-20"
+                  loading="eager"
                 />
               </Circle>
             </div>
@@ -150,7 +166,7 @@ export const HeroSection = () => {
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
                   className="size-35 [rotate:20deg]"
-                  loading="lazy"
+                  loading="eager"
                 />
               </Circle>
             </div>
@@ -161,16 +177,18 @@ export const HeroSection = () => {
               className="inline-flex [rotate:30deg]"
               ref={icosahedronRef}
             >
-              <img
+              <OptimizedImage
                 src="/assets/images/icosahedron.png"
                 className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate[10%] brightness-4 hue-rotate-240"
                 alt=""
+                loading="eager"
               />
 
-              <img
+              <OptimizedImage
                 src="/assets/images/icosahedron.png"
                 alt="Icosanhedron 3D"
                 className="w-125"
+                loading="eager"
               />
             </motion.div>
           </div>
