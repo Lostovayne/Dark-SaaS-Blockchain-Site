@@ -10,13 +10,6 @@
 }
 
 @layer base {
-  /* Skip rendering offscreen sections — no image loading, no layout, no paint.
-     Browser automatically renders them when scrolled near. */
-  section {
-    content-visibility: auto;
-    contain-intrinsic-size: 500px;
-  }
-
   body {
     @apply antialiased bg-zinc-900 text-zinc-300 font-body;
   }
@@ -36,6 +29,30 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+}
+
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-sm, 1.5rem);
+  padding-right: var(--container-padding-sm, 1.5rem);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: var(--container-padding-md, 2rem);
+    padding-right: var(--container-padding-md, 2rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding-left: var(--container-padding-lg, 5.5rem);
+    padding-right: var(--container-padding-lg, 5.5rem);
   }
 }
 

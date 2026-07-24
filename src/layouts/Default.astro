@@ -47,7 +47,7 @@ import { ClientRouter } from "astro:transitions";
       <slot />
     </main>
 
-    <style>
+    <style is:global>
       /*
        * Container responsive — unlayered so it overrides Tailwind's .container
        * Tailwind v4 strips @media inside @layer, so these MUST live here.
