@@ -111,7 +111,7 @@ export const HeroSection = () => {
                   style={{ rotate: CubeRotate }}
                   src="/assets/images/cube.png"
                   alt="Cube 3d"
-                  className="size-35 [transform:rotate(100deg)]"
+                  className="size-35 [rotate:100deg]"
                   loading="lazy"
                 />
               </Circle>
@@ -124,7 +124,7 @@ export const HeroSection = () => {
                   style={{ rotate: CuboidRotate }}
                   src="/assets/images/cuboid.png"
                   alt="Cuboid 3d"
-                  className="size-35 [transform:rotate(20deg)]"
+                  className="size-35 [rotate:20deg]"
                   loading="lazy"
                 />
               </Circle>
@@ -137,7 +137,7 @@ export const HeroSection = () => {
                   style={{ rotate: TorusRotate }}
                   src="/assets/images/torus.png"
                   alt="Torus 3d"
-                  className="size-35 [transform:rotate(20deg)]"
+                  className="size-35 [rotate:20deg]"
                   loading="lazy"
                 />
               </Circle>
@@ -146,7 +146,7 @@ export const HeroSection = () => {
             <motion.div
               style={{ rotate: IcosahedronRotate }}
               initial={false}
-              className="inline-flex [transform:rotate(30deg)]"
+              className="inline-flex [rotate:30deg]"
               ref={icosahedronRef}
             >
               <img
